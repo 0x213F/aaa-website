@@ -46,10 +46,19 @@ const { title } = Astro.props;
     /* Measure (line length) */
     --measure: 65ch;
 
-    /* Colors */
-    --color-text: #1a1a1a;
-    --color-text-muted: #666;
-    --color-bg: #fff;
+    /* Earth tone palette */
+    --color-sand-light: #f5f0e8;
+    --color-sand: #e8dfd1;
+    --color-sand-dark: #d4c4a8;
+    --color-earth: #8b7355;
+    --color-earth-dark: #5c4a3a;
+    --color-stone: #4a4a4a;
+    --color-charcoal: #2d2d2d;
+
+    /* Semantic colors */
+    --color-text: var(--color-charcoal);
+    --color-text-muted: var(--color-earth);
+    --color-bg: var(--color-sand-light);
   }
 
   *,
@@ -65,6 +74,8 @@ const { title } = Astro.props;
     line-height: var(--leading-normal);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   body {
