@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="AAA Website">
+  <main>
+    <h1>Welcome</h1>
+    <p>A static website built with intentional spacing and typography.</p>
+  </main>
+</Base>
+
+<style>
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4);
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: var(--space-3);
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+</style>
