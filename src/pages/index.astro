@@ -89,15 +89,18 @@ const orgs = [
         />
       </div>
       <div class="hero-info">
+        <span class="location-badge">Bay Area</span>
         <h1>Artists Against Apartheid</h1>
-        <p class="tagline">Bay Area</p>
         <p class="description">
-          Support our project by purchasing on Bandcamp and donating below.<br /><span class="streaming-note">Streaming available on February 13.</span>
+          Support our project by purchasing on Bandcamp and donating below.
         </p>
         <div class="hero-actions">
           <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="btn btn-primary">Listen</a>
           <a href="#donate" class="btn btn-outline">Donate</a>
         </div>
+        <p class="streaming-note">
+          Streaming available on February 13.
+        </p>
       </div>
     </div>
   </header>
@@ -460,6 +463,7 @@ const orgs = [
     justify-content: center;
     padding: var(--space-6) var(--space-4);
     overflow: hidden;
+    background-color: #d8d8d8;
   }
 
   .hero-bg {
@@ -468,7 +472,7 @@ const orgs = [
     background-image: url('/assets/website-background.png');
     background-size: cover;
     background-position: 50% 50%;
-    opacity: 0.12;
+    opacity: 0.08;
     transform: scaleX(-1);
   }
 
@@ -517,7 +521,22 @@ const orgs = [
 
   .hero h1 {
     color: var(--charcoal);
+    position: relative;
   }
+
+  .location-badge {
+    display: inline-block;
+    width: fit-content;
+    color: var(--red);
+    font-size: var(--font-size-base);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3em 0.6em;
+    border: 3px solid var(--red);
+    border-radius: 4px;
+  }
+
 
   .tagline {
     font-size: var(--font-size-xl);
@@ -528,13 +547,14 @@ const orgs = [
 
   .description {
     font-size: var(--font-size-lg);
-    color: var(--charcoal-light);
+    color: var(--charcoal);
   }
 
   .streaming-note {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     color: var(--gray);
     font-style: italic;
+    margin-top: var(--space-1);
   }
 
   .hero-actions {
@@ -562,27 +582,27 @@ const orgs = [
 
   .btn-primary,
   .btn-red {
-    background: #fc1c33;
+    background: var(--red);
     color: var(--white);
     border: none;
   }
 
   .btn-primary:hover,
   .btn-red:hover {
-    background: #d91628;
+    background: var(--red-dark);
     color: var(--white);
     text-decoration: none;
   }
 
   .btn-outline {
-    background: transparent;
-    color: #fc1c33;
-    border: 2px solid #fc1c33;
+    background: var(--white);
+    color: var(--charcoal);
+    border: none;
   }
 
   .btn-outline:hover {
-    background: #fc1c33;
-    color: var(--white);
+    background: var(--cream-dark);
+    color: var(--charcoal);
     text-decoration: none;
   }
 
