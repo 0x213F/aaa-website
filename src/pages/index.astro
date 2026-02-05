@@ -230,7 +230,7 @@ const orgs = [
           class="footer-logo"
         />
       </a>
-      <form class="signup-form" action="#" method="POST">
+      <form class="signup-form" id="signup-form">
         <input type="email" name="email" placeholder="Enter your email" required class="form-input" />
         <div class="form-checkboxes">
           <label class="form-checkbox">
@@ -287,6 +287,60 @@ const orgs = [
   modal?.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.classList.remove('visible');
+    }
+  });
+
+  // Prevent Enter from submitting when on checkboxes - toggle instead
+  document.querySelectorAll('.form-checkbox input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        checkbox.checked = !checkbox.checked;
+      }
+    });
+  });
+
+  // Form submission
+  const signupForm = document.getElementById('signup-form');
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwsYB7Ywru3K-zFg0hUpLDLFJVFocGkztK0PzmvkNFzwedyDsnLsznUYMvdS8hoO_By/exec';
+
+  signupForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = signupForm.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    const formData = {
+      email: signupForm.querySelector('input[name="email"]').value,
+      liveShow: signupForm.querySelector('input[name="live-show"]').checked,
+      musician: signupForm.querySelector('input[name="musician"]').checked
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      submitBtn.textContent = 'Thank you!';
+      signupForm.reset();
+
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 3000);
+
+    } catch (error) {
+      submitBtn.textContent = 'Error - Try again';
+      submitBtn.disabled = false;
+
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+      }, 3000);
     }
   });
 </script>
