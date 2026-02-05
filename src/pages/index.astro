@@ -8,11 +8,38 @@ const now = new Date();
 const isReleased = now >= releaseDate;
 
 const artists = [
-  '@citizens.jazz', '@hayestackmusic', '@flaminghakama', '@soundsradiant',
-  '@colin_surridge', '@leelazheniia', '@camelliaboutrosmusic', '@evelyndonaji_',
-  '@dayna_stephens', '@michaelisaac.sm', '@equipto_415', '@chrifcohen',
-  '@thehoganbrothers', '@tiffanyaustinmusic', '@javiersantiagomusic',
-  '@tigers_view', '@isaac.bc', '@lewispatzner', '@evan_sounds', '@bayareapym',
+  'Anthony Fung',
+  'Brendan Glasson',
+  'Camellia Boutros',
+  'Caroline Chung',
+  'Chili Corder',
+  'Chris Cohen',
+  'Colin Hogan',
+  'Colin Surridge',
+  'Daniel Pearce',
+  'Elaine Alt',
+  'Evan Frances',
+  'Evelyn Donají Arellano',
+  'Isaac Cole',
+  'Javier Santiago',
+  'Jaycie Grady',
+  'Josh Schultheiss',
+  'Julian Hogan',
+  'Julian Lopez',
+  'Khalil Doak-Anthony',
+  'Leela Paymai',
+  'Lewis Patzner',
+  'Mayya Feygina',
+  'Michael Louis',
+  'Sharon Benítez',
+  'Steve Hogan',
+  'Tanya Benítez',
+  'The Palestinian Youth Ensemble',
+  'Tiffany Austin',
+  'Todd Simon',
+  'Vince De Jesus',
+  'Yanelit Madrís Zarate',
+  'Yuridia Ollincihuatl Martínez',
 ];
 
 const orgs = [
@@ -40,12 +67,12 @@ const orgs = [
   <!-- Sticky Nav -->
   <nav class="topbar" id="topbar">
     <div class="topbar-inner">
-      <a href="#" class="topbar-logo">
+      <a href="https://againstapartheid.art" target="_blank" rel="noopener" class="topbar-logo">
         <img src={`/assets/small-logo.png`} alt="AAA" />
       </a>
       <div class="topbar-actions">
-        <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="topbar-btn-secondary">Listen</a>
-        <a href="#donate" class="topbar-btn">Donate</a>
+        <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="topbar-btn">Listen</a>
+        <a href="#donate" class="topbar-btn-secondary">Donate</a>
       </div>
     </div>
   </nav>
@@ -62,15 +89,14 @@ const orgs = [
         />
       </div>
       <div class="hero-info">
-        <span class="badge">{isReleased ? 'Out Now' : 'Feb 6, 2026'}</span>
         <h1>Artists Against Apartheid</h1>
         <p class="tagline">Bay Area</p>
         <p class="description">
-          A compilation of Bay Area artists united in solidarity with the Palestinian people.
+          Support our project by purchasing on Bandcamp and donating below.<br /><span class="streaming-note">Streaming available on February 13.</span>
         </p>
         <div class="hero-actions">
-          <a href="#donate" class="btn btn-primary">Donate</a>
-          <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="btn btn-outline">Listen</a>
+          <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="btn btn-primary">Listen</a>
+          <a href="#donate" class="btn btn-outline">Donate</a>
         </div>
       </div>
     </div>
@@ -118,26 +144,25 @@ const orgs = [
   <section class="about">
     <div class="container container--narrow">
       <h2>About the Project</h2>
-      <p class="manifesto">
-        We, the undersigned artists, stand in firm solidarity with those resisting occupation and fighting for their right to self-determination. We are united in our support for Palestinian liberation: from the river to the sea, Palestine will be free.
+      <p class="proceeds">
+        All proceeds from this compilation will be directed towards organizations supporting Palestinians. Scroll down to learn more.
+      </p>
+      <p class="statement-text">
+        We, the undersigned artists, stand in firm solidarity with those resisting occupation and fighting for their right to self-determination.
+      </p>
+      <p class="statement-text">
+        We are united in our support for Palestinian liberation. From the river to the sea, Palestine will be free.
       </p>
 
-      <!-- Artist Cloud -->
+      <!-- Artist List -->
       <div class="artist-cloud">
-        {artists.map((handle) => (
-          <a
-            href={`https://instagram.com/${handle.slice(1)}`}
-            target="_blank"
-            rel="noopener"
-            class="artist-link"
-          >
-            {handle}
-          </a>
+        {artists.map((name) => (
+          <span class="artist-name">{name}</span>
         ))}
       </div>
 
       <p>
-        Caroline Chung (<a href="https://carolinechung.bandcamp.com/" target="_blank" rel="noopener">Citizens Jazz</a>) and Mike Walti (<a href="https://www.wyldwoodrecords.com/" target="_blank" rel="noopener">Wyldwood Studios</a>) are the executive producers of this compilation. This project was born from an unwavering commitment to stand with the people of Palestine in their struggle against imperialism, ethnic cleansing, and settler colonialism.
+        Caroline Chung (<a href="https://carolinechung.bandcamp.com/" target="_blank" rel="noopener">Citizens Jazz</a>) and Mike Walti (<a href="https://www.wyldwoodrecords.com/" target="_blank" rel="noopener">Wyldwood Studios</a>) executively produced this album from an unwavering commitment to stand with the people of Palestine in their struggle against imperialism, ethnic cleansing, and settler colonialism.
       </p>
     </div>
   </section>
@@ -199,14 +224,24 @@ const orgs = [
   <footer class="footer">
     <div class="container">
       <img
-        src={`/assets/small-logo.png`}
+        src={`/assets/aaa-logo.png`}
         alt="Artists Against Apartheid"
         class="footer-logo"
       />
-      <div class="footer-links">
-        <a href="https://againstapartheid.art" target="_blank" rel="noopener">againstapartheid.art</a>
-      </div>
-      <p class="copyright">© 2026 Artists Against Apartheid: Bay Area</p>
+      <form class="signup-form" action="#" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required class="form-input" />
+        <div class="form-checkboxes">
+          <label class="form-checkbox">
+            <input type="checkbox" name="live-show" />
+            <span>Tell me about live shows</span>
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" name="musician" />
+            <span>I want to get involved</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Sign Up</button>
+      </form>
     </div>
   </footer>
 </Base>
@@ -277,7 +312,7 @@ const orgs = [
     background-image: url('/assets/website-background.png');
     background-size: cover;
     background-position: center;
-    transform: scaleY(-1);
+    transform: scale(-1, -1);
     z-index: -1;
   }
 
@@ -291,13 +326,23 @@ const orgs = [
     justify-content: space-between;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0.75rem var(--space-4);
+    padding: 1.25rem var(--space-4);
   }
 
   .topbar-logo img {
-    height: 40px;
-    width: auto;
-    opacity: 0.9;
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+    background: var(--red-dark);
+    padding: 8px;
+    border-radius: 8px;
+    box-sizing: content-box;
+    transition: background 0.2s ease;
+  }
+
+  .topbar-logo:hover img {
+    background: var(--red);
+    outline: 2px solid var(--white);
   }
 
   .topbar-actions {
@@ -307,38 +352,45 @@ const orgs = [
   }
 
   .topbar-btn-secondary {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
-    font-size: var(--font-size-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 0 1.5rem;
+    font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--white);
-    background: transparent;
-    border: 2px solid var(--white);
-    border-radius: 4px;
+    color: var(--red);
+    background: var(--white);
+    border: none;
+    border-radius: 8px;
     transition: all 0.2s ease;
   }
 
   .topbar-btn-secondary:hover {
-    background: var(--white);
+    background: var(--cream);
     color: var(--red);
     text-decoration: none;
   }
 
   .topbar-btn {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
-    font-size: var(--font-size-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 0 1.5rem;
+    font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--red);
-    background: var(--white);
-    border-radius: 4px;
+    color: var(--white);
+    background: var(--red-dark);
+    border-radius: 8px;
     transition: background 0.2s ease;
   }
 
   .topbar-btn:hover {
-    background: var(--cream);
-    color: var(--red);
+    background: var(--red);
+    color: var(--white);
     text-decoration: none;
+    outline: 2px solid var(--white);
   }
 
   /* ============================================
@@ -413,14 +465,20 @@ const orgs = [
 
   .tagline {
     font-size: var(--font-size-xl);
-    font-weight: 500;
-    color: var(--gray);
+    font-weight: 700;
+    color: var(--red);
     margin-top: -0.5rem;
   }
 
   .description {
     font-size: var(--font-size-lg);
     color: var(--charcoal-light);
+  }
+
+  .streaming-note {
+    font-size: var(--font-size-base);
+    color: var(--gray);
+    font-style: italic;
   }
 
   .hero-actions {
@@ -450,6 +508,7 @@ const orgs = [
   .btn-red {
     background: #fc1c33;
     color: var(--white);
+    border: none;
   }
 
   .btn-primary:hover,
@@ -474,12 +533,14 @@ const orgs = [
   .btn-white {
     background: var(--white);
     color: var(--charcoal);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   }
 
   .btn-white:hover {
-    background: var(--cream);
+    background: var(--white);
     color: var(--charcoal);
     text-decoration: none;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
   }
 
   /* ============================================
@@ -539,7 +600,23 @@ const orgs = [
   }
 
   .culture {
+    position: relative;
     background: var(--cream);
+  }
+
+  .culture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/grainy-background.png');
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .culture .container {
+    position: relative;
+    z-index: 1;
   }
 
   .culture h2 {
@@ -572,15 +649,21 @@ const orgs = [
     margin-bottom: var(--space-3);
   }
 
-  .about .manifesto {
+  .about .proceeds {
     color: var(--red);
-    font-weight: 400;
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .about .statement-text {
+    color: var(--charcoal);
   }
 
   /* ============================================
      ARTIST CLOUD
   ============================================ */
   .artist-cloud {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-1) var(--space-3);
@@ -588,17 +671,22 @@ const orgs = [
     padding: var(--space-4);
     background: var(--cream);
     border-radius: 8px;
+    overflow: hidden;
   }
 
-  .artist-link {
+  .artist-cloud::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/grainy-background.png');
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .artist-name {
     font-size: var(--font-size-sm);
     color: var(--charcoal-light);
-    transition: color 0.15s ease;
-  }
-
-  .artist-link:hover {
-    color: var(--red);
-    text-decoration: none;
   }
 
   /* ============================================
@@ -677,6 +765,7 @@ const orgs = [
   .donate {
     padding: var(--space-7) var(--space-4);
     background: var(--cream);
+    scroll-margin-top: 100px;
   }
 
   .donate h2 {
@@ -809,16 +898,85 @@ const orgs = [
      FOOTER
   ============================================ */
   .footer {
+    position: relative;
     padding: var(--space-6) var(--space-4);
     background: var(--charcoal);
     color: var(--cream);
     text-align: center;
+    overflow: hidden;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/website-background.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+  }
+
+  .footer .container {
+    position: relative;
+    z-index: 1;
   }
 
   .footer-logo {
-    width: 180px;
-    margin: 0 auto var(--space-3);
-    filter: brightness(0) saturate(100%) invert(83%) sepia(11%) saturate(735%) hue-rotate(25deg) brightness(92%) contrast(87%);
+    width: 120px;
+    margin: 0 auto var(--space-4);
+    border-radius: 8px;
+  }
+
+  .signup-form {
+    max-width: 400px;
+    margin: 0 auto var(--space-4);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: var(--space-3);
+  }
+
+  .form-checkboxes {
+    text-align: left;
+    margin-bottom: var(--space-3);
+  }
+
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    cursor: pointer;
+    color: #cdc794;
+  }
+
+  .form-checkbox input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  .form-checkbox span {
+    flex: 1;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: #cdc794;
+    color: var(--charcoal);
+    border: none;
+  }
+
+  .form-submit:hover {
+    background: #b8b37f;
+    color: var(--charcoal);
   }
 
   .footer p {
@@ -901,7 +1059,16 @@ const orgs = [
     }
 
     .topbar-logo img {
-      height: 32px;
+      height: 36px;
+      width: 36px;
+      padding: 6px;
+    }
+
+    .topbar-btn,
+    .topbar-btn-secondary {
+      height: 48px;
+      padding: 0 1rem;
+      font-size: var(--font-size-sm);
     }
   }
 </style>
