@@ -223,11 +223,13 @@ const orgs = [
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <img
-        src={`/assets/aaa-logo.png`}
-        alt="Artists Against Apartheid"
-        class="footer-logo"
-      />
+      <a href="https://againstapartheid.art" target="_blank" rel="noopener" class="footer-logo-link">
+        <img
+          src={`/assets/small-logo.png`}
+          alt="Artists Against Apartheid"
+          class="footer-logo"
+        />
+      </a>
       <form class="signup-form" action="#" method="POST">
         <input type="email" name="email" placeholder="Enter your email" required class="form-input" />
         <div class="form-checkboxes">
@@ -710,6 +712,16 @@ const orgs = [
     opacity: 0.3;
   }
 
+  .pledge::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/grainy-background.png');
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
   .pledge .container {
     position: relative;
     z-index: 1;
@@ -917,15 +929,36 @@ const orgs = [
     z-index: 0;
   }
 
+  .footer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/grainy-background.png');
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .footer .container {
     position: relative;
     z-index: 1;
   }
 
-  .footer-logo {
-    width: 120px;
+  .footer-logo-link {
+    display: block;
     margin: 0 auto var(--space-4);
+  }
+
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: #cdc794;
+    padding: 10px;
     border-radius: 8px;
+    box-sizing: content-box;
+    filter: brightness(0) invert(1);
   }
 
   .signup-form {
