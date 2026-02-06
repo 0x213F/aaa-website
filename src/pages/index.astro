@@ -71,7 +71,7 @@ const orgs = [
         <img src={`/assets/small-logo.png`} alt="AAA" />
       </a>
       <div class="topbar-actions">
-        <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="topbar-btn">Listen</a>
+        <button type="button" class="topbar-btn" data-listen-trigger>Listen</button>
         <a href="#donate" class="topbar-btn-secondary">Donate</a>
       </div>
     </div>
@@ -95,7 +95,7 @@ const orgs = [
           Support our project by purchasing on Bandcamp and donating below.
         </p>
         <div class="hero-actions">
-          <a href="https://aaabayarea.bandcamp.com/" target="_blank" rel="noopener" class="btn btn-primary">Listen</a>
+          <button type="button" class="btn btn-primary" data-listen-trigger>Listen</button>
           <a href="#donate" class="btn btn-outline">Donate</a>
         </div>
         <p class="streaming-note">
@@ -190,6 +190,9 @@ const orgs = [
       <p class="intro">
         All proceeds from this compilation will be directed towards organizations supporting Palestinians.
       </p>
+      <p class="intro-note">
+        All direct donations via the links below are tax deductible.
+      </p>
 
       <div class="org-list">
         {orgs.map((org) => (
@@ -218,6 +221,15 @@ const orgs = [
           <p>Please write <strong>"PYM Bay Area"</strong> in the donation description field.</p>
           <p>This directs your contribution to support the <a href="https://armsembargonow.com/" target="_blank" rel="noopener">Oakland People's Arms Embargo</a> — a campaign working to stop weapons shipments through the Port of Oakland.</p>
           <button type="button" class="btn btn-red modal-continue" id="modal-continue">Continue to Donate →</button>
+        </div>
+      </div>
+
+      <!-- Listen Modal -->
+      <div class="modal" id="listen-modal">
+        <div class="modal-content">
+          <h3>Before You Listen</h3>
+          <p>All proceeds will be directed towards organizations supporting Palestinians.</p>
+          <button type="button" class="btn btn-red modal-continue" id="listen-continue">Continue to Bandcamp →</button>
         </div>
       </div>
     </div>
@@ -290,6 +302,30 @@ const orgs = [
   modal?.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.classList.remove('visible');
+    }
+  });
+
+  // Listen Modal
+  const listenModal = document.getElementById('listen-modal');
+  const listenTriggers = document.querySelectorAll('[data-listen-trigger]');
+  const listenContinue = document.getElementById('listen-continue');
+  const bandcampUrl = 'https://aaabayarea.bandcamp.com/';
+
+  listenTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      listenModal?.classList.add('visible');
+    });
+  });
+
+  listenContinue?.addEventListener('click', () => {
+    window.open(bandcampUrl, '_blank');
+    listenModal?.classList.remove('visible');
+  });
+
+  // Close listen modal when clicking outside
+  listenModal?.addEventListener('click', (e) => {
+    if (e.target === listenModal) {
+      listenModal.classList.remove('visible');
     }
   });
 
@@ -884,8 +920,14 @@ const orgs = [
 
   .donate .intro {
     font-size: var(--font-size-lg);
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-2);
     color: var(--red);
+  }
+
+  .donate .intro-note {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-5);
+    color: var(--charcoal);
   }
 
   .org-list {
@@ -1002,6 +1044,14 @@ const orgs = [
     font-size: inherit;
     text-align: left;
     width: 100%;
+  }
+
+  /* Button reset for modal triggers */
+  button.btn-primary,
+  button.topbar-btn {
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
   }
 
   /* ============================================
