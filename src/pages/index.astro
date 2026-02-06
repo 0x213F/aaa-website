@@ -1010,11 +1010,18 @@ const orgs = [
 
   .modal-content {
     background: var(--cream);
-    padding: var(--space-5);
+    padding: var(--space-4);
     border-radius: 8px;
     max-width: 480px;
-    margin: var(--space-4);
+    margin: var(--space-3);
     text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    .modal-content {
+      padding: var(--space-3);
+      margin: var(--space-2);
+    }
   }
 
   .modal-content h3 {
