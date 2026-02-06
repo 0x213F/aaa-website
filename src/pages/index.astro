@@ -474,6 +474,18 @@ const orgs = [
     background-position: 50% 50%;
     opacity: 0.15;
     transform: scaleX(-1);
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/grainy-background.png');
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hero-content {
@@ -484,6 +496,7 @@ const orgs = [
     max-width: var(--max-width);
     width: 100%;
     align-items: center;
+    z-index: 1;
   }
 
   .hero-artwork {
