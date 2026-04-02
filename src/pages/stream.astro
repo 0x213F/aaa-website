@@ -1,0 +1,137 @@
+---
+import Base from '../layouts/Base.astro';
+
+const platforms = [
+  {
+    name: 'Bandcamp',
+    url: 'https://aaabayarea.bandcamp.com/',
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/playlist?list=OLAK5uy_nluQDx8Bg_yBFvVF063eZ77fW2jGYPSGw',
+  },
+];
+---
+
+<Base title="Stream - Artists Against Apartheid: Bay Area">
+  <div class="stream-page">
+    <a href="/" class="back-link">&larr; Homepage</a>
+    <img src="/assets/aaa-logo.jpeg" alt="Artists Against Apartheid" class="stream-art" />
+    <h1>Artists Against Apartheid<br/><span class="bay-area-badge">Bay Area</span></h1>
+    <p>Support our project by purchasing on Bandcamp and streaming below.</p>
+    <div class="platform-list">
+      {platforms.map((platform) => (
+        <a href={platform.url} target="_blank" rel="noopener" class="platform-btn">
+          {platform.name} <span class="arrow">&rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .stream-page {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-6) var(--space-3);
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .stream-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/grainy-background.png');
+    background-repeat: repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .stream-page > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-link {
+    align-self: flex-start;
+    font-size: var(--font-size-base);
+    color: var(--gray);
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link:hover {
+    color: var(--red);
+  }
+
+  .stream-art {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: var(--space-4);
+  }
+
+  h1 {
+    margin-bottom: var(--space-2);
+  }
+
+  .bay-area-badge {
+    display: inline-block;
+    color: var(--red);
+    font-size: 0.45em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3em 0.6em;
+    border: 3px solid var(--red);
+    border-radius: 4px;
+    margin-bottom: var(--space-3);
+  }
+
+  p {
+    color: var(--gray);
+    margin-bottom: var(--space-5);
+  }
+
+  .platform-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .platform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    background: var(--charcoal);
+    color: var(--white);
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .platform-btn .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .platform-btn:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .platform-btn:hover {
+    background: var(--charcoal-light);
+    color: var(--white);
+    text-decoration: none;
+  }
+</style>

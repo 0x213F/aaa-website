@@ -101,7 +101,7 @@ const orgs = [
           <a href="#donate" class="btn btn-outline">Donate</a>
         </div>
         <p class="streaming-note">
-          Streaming available on February 17.
+          Stream today!
         </p>
       </div>
     </div>
@@ -231,6 +231,7 @@ const orgs = [
           <h3>Before You Listen</h3>
           <p>All proceeds will be directed towards organizations supporting Palestinians.</p>
           <button type="button" class="btn btn-red modal-continue" id="listen-continue">Continue to Bandcamp →</button>
+          <a href="/stream" class="stream-link">Stream on other platforms →</a>
         </div>
       </div>
     </div>
@@ -1042,6 +1043,18 @@ const orgs = [
 
   .modal-continue {
     margin-top: var(--space-2);
+  }
+
+  .stream-link {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: var(--font-size-base);
+    color: var(--gray);
+    text-align: center;
+  }
+
+  .stream-link:hover {
+    color: var(--red);
   }
 
   /* Button reset for org-card */
